@@ -9,8 +9,8 @@ import { port } from '../src/config'
 import { ifDebug } from './lib/utils'
 import {cleanDir} from './lib/fs'
 const exec = util.promisify(require('child_process').exec);
-//const clientConfig = require('../webpack5-tools/webpack.client.config');
-const serverConfig = require('./webpack.server.config');
+
+import serverConfig from '../webpack5-tools/webpack.server.config';
 //const config = require('./webpack.config')
 import clientConfig from '../webpack5-tools/webpack.client.config';
 
@@ -41,52 +41,46 @@ import clientConfig from '../webpack5-tools/webpack.client.config';
     }
 
     
-
-    const webpackBundler = webpack(clientConfig)
+    //const serverBundler = webpack(serverConfig)
+    const webpackBundler = webpack([clientConfig,serverConfig])
     const devmw = webpackDevMiddleware(webpackBundler,{
         publicPath: clientConfig.output.publicPath,
         writeToDisk: true
     })
-    //console.log(webpackBundler.compilers)
-     //const webpackBundler = webpack([clientConfig, serverConfig])
-
-    //const devmw = webpackDevMiddleware(webpackBundler, {
-    //     publicPath: clientConfig.output.publicPath,
-    //     writeToDisk: true,
-    // })
-     const hotmw = webpackHotMiddleware(webpackBundler, {});
+ 
+     const hotmw = webpackHotMiddleware(webpackBundler.compilers[0], {});
     devmw.waitUntilValid(() => {
-    //    const bs = browserSync.create();
-    //     bs.init({
-    //         proxy: {
-    //             target: `http://localhost:${port}`,
-    //             middleware: [devmw, hotmw],
-    //         },
-    //     }, () => {
+        const bs = browserSync.create();
+        bs.init({
+            proxy: {
+                target: `http://localhost:${port}`,
+                middleware: [devmw, hotmw],
+            },
+        }, () => {
 
 
-    //         console.log(`BrowserSync up and running at http://localhost:${port}`)
-    //         console.log('starting backend service....')
+            console.log(`BrowserSync up and running at http://localhost:${port}`)
+            console.log('starting backend service....')
 
            
-    //         const server = cp.spawn('node', [path.join(serverConfig.output.path, serverConfig.output.filename)], {
-    //             silent: false,
-    //             env: {
-    //                 ...process.env,
-    //                 NODE_ENV: 'development'
-    //             }
-    //         })
+            const server = cp.spawn('node', [path.join(serverConfig.output.path, serverConfig.output.filename)], {
+                silent: false,
+                env: {
+                    ...process.env,
+                    NODE_ENV: 'development'
+                }
+            })
 
-    //         handleServer(server)
-    //         server.stderr = process.stderr
-    //         process.on('exit', () => {
-    //             server.kill('SIGTERM')
-    //         })
+            handleServer(server)
+            server.stderr = process.stderr
+            process.on('exit', () => {
+                server.kill('SIGTERM')
+            })
          })
 
 
 
-    // })
+     })
 })()
 
 function handleServer(server) {

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 /* eslint-disable max-len */
 
-export const port = process.env.PORT || 3000;
+export const port = process.env.PORT || 3009;
 export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`;
 export const url = 'http://localhost:3001';
 export const sitename = 'Your Website Name';

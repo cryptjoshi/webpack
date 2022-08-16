@@ -14,11 +14,12 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const [config, cssLoaderLegacySupportPlugins, buildMode ] = webpackConfig
 import {ifDebug} from '../tools/lib/utils'
 const isDebug = !process.argv.includes('--release');
-const clientConfig = {
+const isAnalyze = process.argv.includes('--analyze') || process.argv.includes('--analyse');
+const clientConfig = smp.wrap({
     mode: config.mode,
     context: config.context,
     name: 'client',
-    devtool: "eval-cheap-source-map",
+    devtool: isDebug ? 'cheap-module-source-map' : false,
     entry: {
         client:[
             'babel-polyfill',
@@ -106,8 +107,8 @@ const clientConfig = {
     output:{
         publicPath:config.output.publicPath,
         path:outputDir,
-        filename: ifDebug('[name].js','[chunkhash:8].js'),
-        chunkFilename: ifDebug('[name].chunk.js','[chunkhash:8].chunk.js')
+        filename: ifDebug('[name].js','[name].[chunkhash:8].js'),
+        chunkFilename: ifDebug('[name].chunk.js','[name].[chunkhash:8].chunk.js')
     },
     externals:[],
     resolve: {
@@ -123,15 +124,91 @@ const clientConfig = {
         }
     },
     plugins:[
-        new CompressionPlugin({
-            filename: "[path][base].gz",
-            algorithm: "gzip",
-            test: /\.js$|\.css$|\.html$/,
-            threshold: 10240,
-            minRatio: 0.8,
-          }),
-    ]
-    
-}
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.DefinePlugin({
+        'process.env.BROWSER': false,
+        'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
+        'process.env.RENTALL_BUILD_MODE': `"${buildMode}"`,
+        __DEV__: isDebug,
+    }),
+    new AssetsPlugin({
+      path: path.resolve(__dirname, '../build'),
+      filename: 'assets.json',
+      prettyPrint: true,
+    }),
 
-export default clientConfig
+    
+
+    ...isDebug ? [] : [
+      // Minimize all JavaScript output of chunks
+      // https://github.com/mishoo/UglifyJS2#compressor-options
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          screw_ie8: true, // React doesn't support IE8
+          warnings: isVerbose,
+          unused: true,
+          dead_code: true,
+        },
+        mangle: {
+          screw_ie8: true,
+        },
+        output: {
+          comments: false,
+          screw_ie8: true,
+        },
+      }),
+    ],
+
+    // Webpack Bundle Analyzer
+    // https://github.com/th0r/webpack-bundle-analyzer
+    ...isAnalyze ? [new BundleAnalyzerPlugin()] : [],
+      new CompressionPlugin({
+        filename: '[path][base].gz',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
+      new CompressionPlugin({
+        filename: "[path][base].br",
+        algorithm: "brotliCompress",
+        test: /\.(js|css|html|svg)$/,
+        compressionOptions: {
+          params: {
+            [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+          },
+        },
+        threshold: 10240,
+        minRatio: 0.8,
+        deleteOriginalAssets: false,
+      }),
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: 'async',
+        minSize: 20000,
+        minRemainingSize: 0,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        enforceSizeThreshold: 50000,
+        cacheGroups: {
+          defaultVendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            reuseExistingChunk: true,
+          },
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    },
+    
+})
+
+module.exports = clientConfig

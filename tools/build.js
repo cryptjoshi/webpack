@@ -35,9 +35,17 @@ import bundle from './bundle'
  
 async function build() {
     await run(clean);
-    // await run(extractMessages);
-    // await run(copy);
-    // await run(bundle)
+    await run(extractMessages);
+    await run(copy);
+    await run(bundle)
+
+      if (process.argv.includes('--static')) {
+    await run(render);
+  }
+
+  if (process.argv.includes('--docker')) {
+    cp.spawnSync('docker', ['build', '-t', pkg.name, '.'], { stdio: 'inherit' });
+  }
     
 }
 export default build;

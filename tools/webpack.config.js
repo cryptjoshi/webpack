@@ -6,7 +6,7 @@ var StringReplacePlugin = require("string-replace-webpack-plugin");
 const isDebug = !process.argv.includes('--release');
 const isVerbose = process.argv.includes('--verbose');
 const isAnalyze = process.argv.includes('--analyze') || process.argv.includes('--analyse');
-
+import {ifDebug} from './lib/utils'
 // buildMode determine routes to the bundle result
 // there are 3 options
 // - main: build only main application routes
@@ -23,7 +23,7 @@ console.log('build with mode:', buildMode)
 
 
 
- const cssLoaderLegacySupportPlugins = {
+ export const cssLoaderLegacySupportPlugins = {
   plugins: [
       new StringReplacePlugin(),
   ],
@@ -44,7 +44,7 @@ console.log('build with mode:', buildMode)
 }
 
 const config =  {
-        mode: isDebug?'development': 'production',
+        mode: ifDebug('development','production'),
         context: path.resolve(__dirname, '..'),
         output: {
           path: path.resolve(__dirname, '../build'),
@@ -52,117 +52,79 @@ const config =  {
         module: {
             rules: [
               {
-                test: /\.css/,
-                include: [
-                    path.resolve(__dirname, '../node_modules')
-                ],
-                use: [
+                  test: /\.css$/,
+                  use: [
                     'isomorphic-style-loader',
                     {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            modules: false,
-                            esModule: false,
-                        }
+                      loader: 'css-loader',
+                      options: {
+                        importLoaders: 1,
+                        modules: false,
+                        esModule: false,
+                      }
                     },
-                ],
+                    {
+                      loader: 'postcss-loader',
+                      options: {
+                          postcssOptions: {
+                              config: path.resolve(__dirname, '../tools/postcss.config.js'),
+                          }
+                      },
+                    },
+                  ]
               },
               {
-                test: /\.css/,
-                exclude: [
-                    path.resolve(__dirname, '../node_modules')
-                ],
-                use: [
-                    {
-                        loader: 'isomorphic-style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            sourceMap: false,
-                            modules: true,
-                            esModule: false,
-                            modules: {
-                                localIdentName: isDebug ? '[name]-[local]-[hash:base64:5]' : '[hash:base64:5]',
-                            },
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                config: path.resolve(__dirname, '../tools/postcss.config.js'),
-                            }
-                        },
-                    },
-                    {
-                      test: /\.(graphql|gql)$/,
-                      exclude: /node_modules/,
-                      loader: 'graphql-tag/loader',
-                    },
-                    {
-                        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-                        loader: 'file-loader',
-                        options: {
-                            name: isDebug ? '[path][name].[ext]?[hash:8]' : '[hash:8].[ext]',
-                        }
-                    },
-                ],
-              },
-              {
-                test: /\.jsx?$/,
-                loader: 'babel-loader',
-                include: [
-                  path.resolve(__dirname, '../src'),
-                ],
-                query: {
-                    // https://github.com/babel/babel-loader#options
-                    cacheDirectory: isDebug,
-          
-                //     // https://babeljs.io/docs/usage/options/
-                    babelrc: false,
-                    presets: [
-                //       // A Babel preset that can automatically determine the Babel plugins and polyfills
-                //       // https://github.com/babel/babel-preset-env
-                       ['env', {
-                         targets: {
-                           browsers: pkg.browserslist,
-                         },
-                         modules: false,
-                         useBuiltIns: false,
-                         debug: false,
-                       }],
-                       'react',
-                       ...isDebug ? [] : ['react-optimize'],
-                    ]
-                }
+                  test: /\.jsx?$/,
+                  include:[
+                      path.resolve(__dirname,'../src')
+                  ],
+                  exclude: /node_modules/,
+                  use: {
+                  loader: 'babel-loader',
+                  options:{
+                      cacheDirectory: isDebug,
+                      babelrc: false,
+                              presets: [
+                                  ["@babel/preset-env",
+                                  {
+                                      targets: {
+                                                 browsers: pkg.browserslist,
+                                               },
+                                               modules: false,
+                                               useBuiltIns: false,
+                                               debug: false,
+                                  },],
+                                  "@babel/preset-react"
+                         
+                              //    ...isDebug ? [] : ['react-optimize'],
+                               ]
+                  }
+                  
+              }
                 },
-                {
-                  test: /\.md$/,
-                  loader: path.resolve(__dirname, './lib/markdown-loader.js'),
-                },
-                {
-                  test: /\.txt$/,
-                  loader: 'raw-loader',
-                },
-                {
-                  test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-                  loader: 'file-loader',
-                  query: {
-                    name: isDebug ? '[path][name].[ext]?[hash:8]' : '[hash:8].[ext]',
+            
+                  {
+                    test: /\.md$/,
+                    loader: path.resolve(__dirname, './lib/markdown-loader.js'),
                   },
+                {
+                  test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                  type: "asset/resource",
                 },
                 {
-                  test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
-                  loader: 'url-loader',
-                  query: {
-                    name: isDebug ? '[path][name].[ext]?[hash:8]' : '[hash:8].[ext]',
-                    limit: 10000,
-                  },
+                  test: /\.(graphql|gql)$/,
+                  exclude: /node_modules/,
+                  loader: 'graphql-tag/loader',
                 },
-            ]
+                {
+                    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                    loader: 'file-loader',
+                    options: {
+                        name: ifDebug('[path][name].[ext]?[hash:8]' , '[hash:8].[ext]'),
+                    }
+                },
+         
+          ]
         },
         plugins: [
           // Adds component stack to warning messages
