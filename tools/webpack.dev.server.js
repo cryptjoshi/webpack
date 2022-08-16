@@ -9,8 +9,10 @@ import { port } from '../src/config'
 import { ifDebug } from './lib/utils'
 import {cleanDir} from './lib/fs'
 const exec = util.promisify(require('child_process').exec);
-const clientConfig = require('./webpack.client.config');
+//const clientConfig = require('../webpack5-tools/webpack.client.config');
 const serverConfig = require('./webpack.server.config');
+//const config = require('./webpack.config')
+import clientConfig from '../webpack5-tools/webpack.client.config';
 
 (async function start() {
     /**
@@ -25,6 +27,7 @@ const serverConfig = require('./webpack.server.config');
      * NODE_ENV=production yarn serve for pre-testing
      * before golive
      */
+    console.log(...clientConfig.entry.client)
     if (ifDebug()) {
         // setting up hot reload entry and plugin to enable it
         // which already support react-hot-reload
@@ -37,57 +40,53 @@ const serverConfig = require('./webpack.server.config');
         )
     }
 
-    const webpackBundler = webpack([clientConfig, serverConfig])
+    
 
-    /**
-     * below is the initlize of webpack development with BrowserSync
-     * which have already been used by default tools project since legacy build tools
-     * you may change BrowserSync to webpack dev server for better maintainance
-     */
-    const devmw = webpackDevMiddleware(webpackBundler, {
+    const webpackBundler = webpack(clientConfig)
+    const devmw = webpackDevMiddleware(webpackBundler,{
         publicPath: clientConfig.output.publicPath,
-        writeToDisk: true,
+        writeToDisk: true
     })
-    const hotmw = webpackHotMiddleware(webpackBundler.compilers[0], {});
+    //console.log(webpackBundler.compilers)
+     //const webpackBundler = webpack([clientConfig, serverConfig])
+
+    //const devmw = webpackDevMiddleware(webpackBundler, {
+    //     publicPath: clientConfig.output.publicPath,
+    //     writeToDisk: true,
+    // })
+     const hotmw = webpackHotMiddleware(webpackBundler, {});
     devmw.waitUntilValid(() => {
-        const bs = browserSync.create();
-        bs.init({
-            proxy: {
-                target: `http://localhost:${port}`,
-                middleware: [devmw, hotmw],
-            },
-        }, () => {
+    //    const bs = browserSync.create();
+    //     bs.init({
+    //         proxy: {
+    //             target: `http://localhost:${port}`,
+    //             middleware: [devmw, hotmw],
+    //         },
+    //     }, () => {
 
 
-            console.log(`BrowserSync up and running at http://localhost:${port}`)
-            console.log('starting backend service....')
+    //         console.log(`BrowserSync up and running at http://localhost:${port}`)
+    //         console.log('starting backend service....')
 
-            /**
-             * start backend server which will be proxy from
-             * browser sync and webpack dev server
-             * 
-             * @todo this is not a proper solution which inherit from legacy build tools
-             * to improve this step you may need to modify source code of server.js
-             * to be able to attach webpack dev middleware into it
-             */
-            const server = cp.spawn('node', [path.join(serverConfig.output.path, serverConfig.output.filename)], {
-                silent: false,
-                env: {
-                    ...process.env,
-                    NODE_ENV: 'development'
-                }
-            })
+           
+    //         const server = cp.spawn('node', [path.join(serverConfig.output.path, serverConfig.output.filename)], {
+    //             silent: false,
+    //             env: {
+    //                 ...process.env,
+    //                 NODE_ENV: 'development'
+    //             }
+    //         })
 
-            handleServer(server)
-            server.stderr = process.stderr
-            process.on('exit', () => {
-                server.kill('SIGTERM')
-            })
-        })
+    //         handleServer(server)
+    //         server.stderr = process.stderr
+    //         process.on('exit', () => {
+    //             server.kill('SIGTERM')
+    //         })
+         })
 
 
 
-    })
+    // })
 })()
 
 function handleServer(server) {
