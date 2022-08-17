@@ -37,6 +37,7 @@ try {
       return;
     }
     const renderReactApp = isInitialRender ? ReactDOM.hydrate : ReactDOM.render;
+    console.log(route.component)
     appInstance = renderReactApp(
       <App>{route.component}</App>
        /* <IntlProvider locale ={locale}>*/

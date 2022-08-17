@@ -27,7 +27,7 @@ class Html extends React.Component {
   };
 render(){
     const { title, description, styles, scripts, state, lang, children, image } = this.props;
-  
+   
     return (
               <html className="no-js" lang={lang}>
                 <head>
@@ -61,9 +61,31 @@ render(){
                   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
                   <meta name="theme-color" content="#ffffff"></meta>
                   <link rel="favicon" href="apple-touch-icon.png" />
+                  {styles.map(style =>
+                    <style
+                      key={style.id}
+                      id={style.id}
+                      // eslint-disable-next-line react/no-danger
+                      dangerouslySetInnerHTML={{ __html: style.cssText }}
+                    />,
+                  )}
+                   {state && (
+                    <script
+                      // eslint-disable-next-line react/no-danger
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          `window.APP_STATE=${serialize(state, { isJSON: true })}`
+                      }}
+                    />
+                  )}
+                  {scripts.map(script => <script key={script} src={script} />)}
                   </head>
                   <body>
-                    <div id="app"></div>
+                  <div
+                  id="app"
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{ __html: children }}
+                  />
                   </body>
                   </html>
     )
