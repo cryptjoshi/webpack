@@ -10,6 +10,7 @@ import pkg from '../package.json';
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const zlib = require("zlib");
 const CompressionPlugin = require("compression-webpack-plugin");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 //const TerserPlugin = require("terser-webpack-plugin");
 const [config, cssLoaderLegacySupportPlugins, buildMode ] = webpackConfig
 import {ifDebug} from '../tools/lib/utils'
@@ -51,7 +52,7 @@ const clientConfig = smp.wrap({
                 ]
             },
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 include:[
                     path.resolve(__dirname,'../src')
                 ],
@@ -59,6 +60,7 @@ const clientConfig = smp.wrap({
                 use: {
                 loader: 'babel-loader',
                 options:{
+                    //plugins: isDebug ? [require.resolve('react-refresh/babel')]:[],
                     cacheDirectory: isDebug,
                     babelrc: false,
                             presets: [
@@ -74,7 +76,8 @@ const clientConfig = smp.wrap({
                                 "@babel/preset-react"
                        
                             //    ...isDebug ? [] : ['react-optimize'],
-                             ]
+                             ],
+                             
                 }
                 
             }
@@ -124,6 +127,7 @@ const clientConfig = smp.wrap({
         }
     },
     plugins:[
+      //new ReactRefreshWebpackPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({

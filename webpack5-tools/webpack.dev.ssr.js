@@ -6,13 +6,13 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpack from 'webpack'
 import cp from 'child_process';
 import { port } from '../src/config'
-import { ifDebug } from './lib/utils'
-import {cleanDir} from './lib/fs'
+import { ifDebug } from './tools/lib/utils'
+import {cleanDir} from './tools/lib/fs'
 const exec = util.promisify(require('child_process').exec);
 
-import serverConfig from '../webpack5-tools/webpack.server.config';
+import serverConfig from './webpack.server.config';
 //const config = require('./webpack.config')
-import clientConfig from '../webpack5-tools/webpack.client.config';
+import clientConfig from '../webpack.client.config';
 
 (async function start() {
     /**
@@ -20,14 +20,14 @@ import clientConfig from '../webpack5-tools/webpack.client.config';
      * to avoid any previous build malfunction
      */
     //await exec(`rm -rf ${path.resolve(__dirname, '../build')}`)
-    cleanDir(`${path.resolve(__dirname, '../build')}`)
+    //cleanDir(`${path.resolve(__dirname, '../build')}`)
     /**
      * setup hot-load module but on development only
      * this means you can run a production server with
      * NODE_ENV=production yarn serve for pre-testing
      * before golive
      */
-    console.log(...clientConfig.entry.client)
+    
     if (ifDebug()) {
         // setting up hot reload entry and plugin to enable it
         // which already support react-hot-reload
@@ -49,7 +49,7 @@ import clientConfig from '../webpack5-tools/webpack.client.config';
     })
  
      const hotmw = webpackHotMiddleware(webpackBundler.compilers[0], {});
-    devmw.waitUntilValid(() => {
+     devmw.waitUntilValid(() => {
         const bs = browserSync.create();
         bs.init({
             proxy: {
@@ -60,7 +60,7 @@ import clientConfig from '../webpack5-tools/webpack.client.config';
 
 
             console.log(`BrowserSync up and running at http://localhost:${port}`)
-            console.log('starting backend service....')
+            console.log(`starting backend service....${path.join(serverConfig.output.path, serverConfig.output.filename)}`)
 
            
             const server = cp.spawn('node', [path.join(serverConfig.output.path, serverConfig.output.filename)], {

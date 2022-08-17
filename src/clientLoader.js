@@ -4,6 +4,7 @@ import main from './client';
 
 function run() {
   // Run the application when both DOM is ready and page content is loaded
+   
   if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
     main();
   } else {

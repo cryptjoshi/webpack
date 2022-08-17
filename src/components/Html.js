@@ -61,24 +61,17 @@ render(){
                   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
                   <meta name="theme-color" content="#ffffff"></meta>
                   <link rel="favicon" href="apple-touch-icon.png" />
-                  {styles.map(style =>
-                    <style
-                      key={style.id}
-                      id={style.id}
-                      // eslint-disable-next-line react/no-danger
-                      dangerouslySetInnerHTML={{ __html: style.cssText }}
-                    />,
-                  )}
-                   {state && (
-                    <script
-                      // eslint-disable-next-line react/no-danger
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          `window.APP_STATE=${serialize(state, { isJSON: true })}`
-                      }}
-                    />
-                  )}
-                  {scripts.map(script => <script key={script} src={script} />)}
+
+                  <link rel="stylesheet" type="text/css" href="/css/react-slick/slick.min.css" />
+                  <link rel="stylesheet" type="text/css" href="/css/react-slick/slick-theme.min.css" />
+                  <link rel="stylesheet" type="text/css" href="/css/react-swiper/swiper.css" />
+                  <link rel="stylesheet" type="text/css" href="/css/react-swiper/swiper.min.css" />
+                  <link rel="stylesheet" href="/css/app-common.css" />
+               
+                  <link rel="stylesheet" media="print" href="/css/print.css" />
+                  <link rel="stylesheet" type="text/css" href="/css/quill-snow.css" />
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css"></link>
+                  <link rel="stylesheet" href="/css/rtl.css" />
                   </head>
                   <body>
                   <div
@@ -86,6 +79,7 @@ render(){
                   // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{ __html: children }}
                   />
+                  {scripts.map(script => <script key={script} src={script} />)}
                   </body>
                   </html>
     )

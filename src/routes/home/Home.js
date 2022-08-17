@@ -11,6 +11,7 @@ class Homepage extends React.Component {
         return (
             <div>
                 <h1>Hello React Webpack5</h1>
+                <p>It on SSR mode</p>
             </div>
         )
     }

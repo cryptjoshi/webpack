@@ -16,6 +16,8 @@ const serverConfig =smp.wrap({
     entry: {
         client: [
             'babel-polyfill',
+            // 'react-hot-loader/patch',
+            // 'webpack-hot-middleware/client',
             './src/server.js',
         ]
     },
@@ -37,12 +39,15 @@ const serverConfig =smp.wrap({
     ],
     plugins: [
         //cssLoaderLegacySupportPlugins.plugins,
+        //new webpack.HotModuleReplacementPlugin(),
         new webpack.ProgressPlugin({ }),
         new webpack.DefinePlugin({
             'process.env.BROWSER': false,
             'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
             'process.env.RENTALL_BUILD_MODE': `"${buildMode}"`,
             __DEV__: isDebug,
+            __CLIENT__: !isDebug,
+            __SERVER__: isDebug,
         }),
          new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
 

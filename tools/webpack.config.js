@@ -74,7 +74,7 @@ const config =  {
                   ]
               },
               {
-                  test: /\.jsx?$/,
+                  test: /\.js?$/,
                   include:[
                       path.resolve(__dirname,'../src')
                   ],

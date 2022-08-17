@@ -69,7 +69,7 @@ async function start() {
             }, resolve);
           };
       
-          //bundler.plugin('done', stats => handleBundleComplete(stats));
+        //  bundler.plugin('done', stats => handleBundleComplete(stats));
         
     })
 }

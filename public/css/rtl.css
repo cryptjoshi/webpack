@@ -1,0 +1,835 @@
+.rtl .textAlignLeftRTL{
+    text-align: left;
+}
+.rtl .textAlignRightRTL{
+    text-align: right;
+}
+.rtl .floatRightRTL{
+    float: right;
+}
+.rtl .floatLeftRTL{
+    float: left;
+}
+.rtl .directionLtr{
+    direction: ltr;
+}
+.rtl .navbar-right {
+    float: left !important;
+}
+.rtl .searchBtnContainerRTL{
+    left: 27px;
+    right: auto;
+}
+.rtl .imgShadowRTL{
+    float: left;
+}
+.rtl .textColumnRTL{
+    padding-left: 80px;
+    padding-right: 0;
+}
+.rtl .arrowPrevRTL{
+    right: -55px !important;
+    left: auto !important;
+    top: 36% !important;
+}
+.rtl .arrowPrevRTL svg{
+    transform: rotate(180deg);
+}
+.rtl .arrowNextRTL{
+    left: -55px !important;
+    right: auto !important;
+    top: 36% !important;
+}
+.rtl .arrowNextRTL svg{
+    transform: rotate(180deg);
+}
+.rtl .secondBannerRTL{
+    clip-path: polygon(0% 0,100% 0%,90% 100%,0% 100%) !important;
+}
+.rtl .firstBannerMarginRTL{
+    margin: 0px -110px 0px -75px;
+}
+.rtl .homeSearchForm .geosuggest__input {
+    padding-right: 12px !important;
+}
+.rtl .iosImgRTL{
+    margin: 0;
+}
+.rtl .feedbackIconRTL{
+    float: right;
+    margin-left: 22px;
+    margin-right: 0;
+}
+.rtl .feedbackBorderLeftRtl{
+    border-left: 1px solid #dce0e0;
+    border-right: 1px solid transparent;
+}
+.rtl .feedbackBorderNoneRtl{
+    border-right: 1px solid transparent;
+}
+.rtl .feedbackBorderRightRtl{
+    border-right: 1px solid #dce0e0 !important;
+}
+.rtl .headerSearchRTL{
+    float: right!important;
+}
+.rtl .searchIconContainerRTL{
+    padding-right: 12px;
+    padding-left: 0;
+}
+.rtl .filterButtonContainerRTL{
+    float: left !important;
+}
+.rtl .searchFilterPopoverRTL{
+    right: 0;
+    left: auto;
+}
+.rtl .labelTextRTL{
+    margin-left: 10px;
+    margin-right: 0;
+}
+.rtl .NhNameRTL{
+    padding: 0 10px 0 0px;
+}
+.rtl .searchMapContainerRTL{
+    left: 0;
+    right: auto;
+    padding: 24px 0 24px 24px;
+}
+.rtl select{
+    background-position: 2% 7px;
+}
+.rtl .marginRight15RTL{
+    margin-left: 15px;
+    margin-right: 0;
+}
+.rtl .modal-dialog {
+    text-align: right;
+}
+.rtl .checkBoxSectionRTL{
+    padding-left: 10px;
+    padding-right: 0;
+}
+.rtl .iconContainerRTL{
+    left: 17px;
+    right: auto;
+}
+.rtl .PerDayRTL{
+    left: 0;
+    right: auto;
+    text-align: right;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 0;
+}
+.rtl .HRDetailsRTL{
+    text-align: right;
+}
+.rtl .carTypeRTL{
+    float: right;
+}
+.rtl .dotRTL{
+    display: inline-block;
+    vertical-align: super;
+    float: right;
+}
+.rtl .hiddentextSliderRTL{
+    width:100%
+}
+.rtl .hiddentextSliderRTL h3{
+      width: 100%;
+}
+.rtl .HRDetailsRTL h3{
+    width: 100%;
+}
+.rtl .redoTextRTL{
+    margin: 0px 10px 0px 0px;
+}
+.rtl .redoContainerRTL{
+    right: 15px;
+    left: auto;
+}
+.rtl .priceCssRTL{
+    left: 0;
+    right: auto;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 0;
+}
+.rtl .rc-pagination-next{
+    line-height: 27px;
+    float: right;
+    margin-right: 8px;
+}
+.rtl .rc-pagination-prev{
+    line-height: 27px;
+    float: right;
+}
+.rtl .displayInlineRTL{
+    display: inline-block;
+}
+.rtl .buttonPositionRTL{
+    right: 13px;
+    left: auto;
+}
+.rtl .modalCaptionLinkRTL{
+   margin-right: 0;
+   margin-left: 12px;
+}
+.rtl .buttonTextRTL{
+    padding-right: 3px;
+    padding-left: 0;
+}
+.rtl .buttonContainerSaveRTL{
+    left: 25px;
+    right: auto;
+}
+.rtl .bannerContainerShareRTL{
+    left: 155px;
+    right: auto;
+}
+.rtl .viewPhotosBtnRTL{
+    right: 20px;
+    left: auto;
+}
+.rtl .displayInlineFlexRTL{
+    border-left: 1px dotted #d8dce1;
+
+}
+.rtl .arrowIconListRTL{
+    transform: rotate(180deg);
+}
+.rtl .splitListRTL{
+padding-right: 0;
+}
+.rtl .inputFocusColor select{
+    background-position: 4% 22px;
+    padding: 20px 20px 20px 40px !important;
+}
+.rtl .navbar-nav.listHeaderStepRTL{
+    float: right !important;
+}
+.rtl .navbar-nav.listHeaderStepRTL li a{
+    border-right: 1px solid #dce0e0;
+    border-left: inherit;
+}
+.rtl .navbar-nav.listHeaderSaveRTL li a
+{
+    border-right: 1px solid #dce0e0;
+    border-left: inherit;
+}
+.rtl .circleSuccessRTL{
+    right: 10px;
+    left: auto;
+}
+.rtl .previewLinkRTL{
+    margin-right: 40px;
+    margin-left: 0;
+}
+.rtl .listContainerRTL{
+    padding: 0;
+}
+.rtl .SubnavBarRTL ul li a {
+    float: right;
+}
+.rtl .publishArrow select{
+
+    margin-right: 12px;
+    margin-left: 0;
+    background-position: 2% 9px;
+    padding: 8px 15px 8px 26px;
+
+}
+.rtl .spaceRight2RTL{
+    margin-left: 12px;
+    margin-right: 0px;
+  
+}
+.rtl .iconRemoveRTL{
+    left: 20px;
+    right: auto;
+    top: 4px
+}
+.rtl .editProfileRTL select{
+    background-position: 3% 7px;
+    padding: 9px 20px 10px 23px;
+}
+.rtl .input-group-addon:first-child {
+    border: inherit !important;
+}
+.rtl .trashIconprofileRTL{
+    left: 2px;
+    right: auto;
+}
+.rtl .payoutSelectRTL select{
+    background-position: 2% 8px !important;
+    padding: 8px 32px 10px 10px !important;
+}
+.rtl .panel-footer {
+    text-align: left;
+}
+.rtl .payoutBackRTL{
+    margin-right: 0px;
+    margin-left: 10px;
+}
+.rtl .tripPagination .rc-pagination-item {
+    float: right;
+}
+.rtl .tripPagination .rc-pagination-prev {
+    float: right;
+    transform: inherit;
+    line-height: 28px;
+}
+.rtl .tripPagination .rc-pagination-next {
+    float: right;
+    transform: inherit;
+    line-height: 28px;
+    margin-right: 8px;
+}
+.rtl .tripPagination .rc-pagination-jump-next {
+    float: right;
+}
+.rtl .tripPagination .rc-pagination-jump-prev {
+    float: right;
+}
+.rtl .reservationAfterSection::before {
+    display: inline-block;
+    border: 10px solid transparent;
+    border-left: 0;
+    border-right-color: #fff;
+    right: auto !important;
+    left: 100% !important;
+    border-width: 0 24px 24px 0;
+    border-color: transparent #fff transparent transparent;
+    transform: rotate(270deg);
+}
+.rtl .reservationAfterSection::after {
+    right: -38px;
+    top: 0;
+    left: auto;
+    width: 38px;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 22px;
+    transform: rotate(82deg);
+}
+.rtl .circleRTL{
+    right: 25px;
+    left: auto;
+}
+.rtl .borderLineRTL::after {
+    right: 41px;
+}
+.rtl .dateFontMarginRTL{
+    margin-right: -6px;
+    margin-left: 0;
+}
+.rtl .profileAvatarSectionRTL{
+    margin: 0 6px 0 0;
+}
+.rtl .chevronIconRTL{
+    transform: rotate(180deg);
+}
+.rtl .viewListSelectRTL select{
+    background-position: 4% 8px !important;
+    padding: 0px 12px 0px 0px !important;
+}
+.rtl .paymenySelectRTL select{
+    background-position: 4% 12px !important;
+    padding: 0px 12px 0px 0px !important;
+}
+.rtl .paymentLabelRTL{
+    text-align: right;
+    display: block;
+}
+.rtl .cardNumberRtl {
+    padding: 16px 0px 0 0;
+    text-align: right;
+}
+.rtl .cardNumberRtlTwo {
+    padding: 10px 0px 0 0;
+}
+.rtl .homeSwiperArrow .nextRTL{
+    left: 5px !important;
+    right: auto !important;
+}
+.rtl .homeSwiperArrow .nextRTL svg{
+    transform: rotate(180deg);
+    right: 9px !important;
+}
+.rtl .homeSwiperArrow .prevRTL{
+    right: 5px !important;
+    left: auto !important;
+}
+.rtl .homeSwiperArrow .prevRTL svg{
+    transform: rotate(180deg);
+    left: 10px !important;
+}
+.rtl .backgroundImageLoginRTL{
+    background-position: 5% 50%;
+    padding: 10px 15px 10px 15px;
+}
+.rtl .iconPositionRTL{
+    margin: -2px 0 0 8px;
+}
+.rtl .newModal .modal-header {
+    float: left;
+}
+.rtl .searchFilter .CalendarMonth {
+    padding: 0 10px !important;
+}
+.rtl .rightTopBannerRTL{
+    padding: 0 !important;
+}
+.rtl .popularLocation .swiper-slide {
+    padding-bottom: 15px;
+}
+.rtl .lauageContentRTL{
+    padding-right: 6px;
+    padding-left: 0;
+}
+.rtl .pagecontentWrapperRTL{
+    margin-left: 0;
+    margin-right: 300px;
+    overflow-y: auto;
+}
+.rtl .adminCollapse button{
+    text-align: right;
+}
+.rtl .listingContentRTL{
+    padding-left: 0px;
+    padding-right: 20px;
+}
+.rtl .footerContainerRTL{
+    margin-right: 250px;
+    margin-left: 0;
+}
+.rtl .adminstyle select {
+    background-position: 3% 12px !important;
+    padding: 0px 20px 0 20px;
+}
+.rtl .trashIconRTL{
+    left: 25px;
+    right: auto;
+}
+.rtl .exportTextRTL{
+    float: left;
+}
+.rtl .tableTwo select {
+    background-position: 9% 11px !important;
+    padding: 0px 19px 2px 20px;
+}
+.rtl .dv-star-rating-star {
+    float: left !important;
+}
+.rtl .radioBtnRTL{
+margin-right: 15px;
+margin-left: 0;
+}
+.rtl .radioBtnTextRTL{
+    margin-right: 3px;
+    margin-left: 0;
+}
+.rtl .btnModalDeleteRTL{
+    margin-left: 0px;
+    margin-right: 15px;
+}
+.rtl .radioBtnMakeRTL{
+    padding-left: 4px;
+    padding-right: 0px;
+}
+.rtl .staticPageUrl .input-group-addon {
+    border-radius: 0px 20px 20px 0px!important;
+}
+.rtl .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+    left: 28px;
+    right: auto;
+}
+.rtl .ql-editor:not(.frontend) {
+    text-align: right;
+}
+.rtl .exportLinkImgRTL{
+    margin-right: 12px;
+    margin-left: 0;
+}
+.rtl .searchMapSection .gm-bundled-control {
+    right: auto !important;
+    left: 0px !important;
+}
+.rtl .headerSearch .geosuggest__suggests {
+    text-align: right;
+}
+.rtl .rc-pagination-item {
+    float: right;
+}
+.rtl .spaceRight2RTL{
+    margin-right: 0px;
+    margin-left: 12px;
+}
+@-moz-document url-prefix() { 
+    .rtl .spaceRight2RTL {
+        margin-right: 0px;
+        margin-left: 12px;
+    }
+    .rtl .publishArrow select {
+        margin-right: 12px;
+
+    }
+  }
+.rtl .carousel-control.right {
+    background-image: inherit !important;
+}
+.rtl .carousel-control.left {
+    background-image: inherit !important;
+}
+.rtl .ColorRTL{
+    margin-left: 5px;
+    margin-right: 0;
+}
+.rtl .BecomeCalendar .DayPicker-Footer {
+    right: auto;
+    left: 0;
+}
+.rtl .blockRadioButtonRTL{
+    margin-right: 0px!important;
+    margin-left: 10px !important;
+}
+.rtl .reportModel .close {
+    float: right !important;
+}
+.rtl .wishListCloseBtn .close {
+    float: right !important;
+}
+.rtl .signupModal .close {
+    float: right !important;
+}
+.rtl .customClosebutton > button > span {
+   left: auto;
+    right: 33px;
+}
+.rtl .createBtnRTL{
+    margin-right: 12px;
+    margin-left: 0;
+}
+.rtl .rentAllHeader .dropdown-menu>li>a{
+    text-align: right;
+}
+.rtl .rentAllHeader .dropdown-menu>li>form>button {
+    text-align: right;
+}
+.rtl .errorMessagePositionRTL{
+    right: 0;
+    left: auto;
+}
+.rtl .locationRTL .gmnoprint.gm-bundled-control{
+    right: 40px;
+    left: auto !important;
+}
+.rtl .locationRTL .gm-fullscreen-control{
+    left: 0px;
+    right: auto !important;
+}
+.rtl .coverPhotoSelectionRTL{
+    right: 5px;
+    left: auto;
+}
+.rtl .iconButtonRTL{
+    border-width: 0px 1px 0px 0px;
+}
+.rtl .bookTextRTL{
+    margin-right: 10px;
+    margin-left: 0;
+}
+.rtl .checkIconRTL{
+    margin: 0px 0px 5px 10px;
+}
+.rtl .locationBtnRTL{
+    float: right !important;
+    margin-right: 20px;
+    margin-left: 0;
+}
+.rtl .Loader__message span{
+    direction: ltr !important;
+}
+.rtl .arButtonLoader span{
+    direction: ltr !important;
+}
+.rtl .dispalyTableRTL{
+    display: table;
+}
+.rtl .displayCellRTL{
+    display: table-cell;
+    vertical-align: top;
+}
+.rtl .headerSearch .geosuggest__suggests {
+    right: -45px !important;
+    left: 0px !important;
+}
+.rtl .headerClose .close {
+    float: right !important;
+}
+.rtl .redux-toastr .top-right{
+    left: 0;
+    right: auto;
+}
+.rtl .viewListingMap .gm-control-active.gm-fullscreen-control{
+    left: 0px !important;
+    right:auto !important;
+}
+.rtl .viewListingMap .gmnoprint.gm-bundled-control{
+    left: 0px !important;
+    right:auto !important;
+}
+.rtl .textSpaceRTL{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.rtl .declineRTL{
+    margin-right: 10px;
+    margin-left: 0;
+}
+.rtl .similarRTL .homeSwiperArrow  {
+   display: none;
+}
+.rtl .similarRTL .homeSwiperArrow {
+   display: none;
+}
+.rtl .threadSubjectUnread::before {
+    right: -15px;;
+}
+.rtl .flagIconRTL{
+    padding-right: 0;
+    padding-left: 5px;
+}
+.rtl .nopaddingRightRTL{
+    padding-left: 0 !important;
+}
+.rtl .resultsContainerRTL{
+    padding: 5px 0px 10px 0;
+}
+.rtl .sc-htpNat {
+    text-align: right;
+}
+.rtl .imgContainerRTL{
+    padding-left: 16px !important;
+    padding-right: 0px !important;
+}
+.rtl .homeSearchForm .geosuggest__item{
+    text-align: right !important;
+}
+.rtl .transactionSelectRTL .form-control{
+    padding: 6px 12px 6px 30px !important;
+}
+.rtl .contactInputRTL{
+    background-position: 4% 50%;
+    padding: 10px 20px 10px 10px;
+}
+.rtl .contactTextInputRTL{
+    background-position: 4% 20%;
+}
+.rtl .modalCaptionLinkRTL{
+    padding-right: 20px;
+}
+.rtl .bookingAvatarRTL{
+    margin-left: 30px;
+    margin-right: 0;
+    float: left;
+}
+.rtl .cardNumberRtl::after{
+    left: 0;
+    right: auto;
+}
+.rtl .cardNumberRtlTwo{
+    background-position: 2%;
+}
+.rtl .meassageiconRTL{
+    background-position: 6% 50%;
+    padding: 10px 12px 10px 10px;
+}
+.rtl .messageThreadRTL{
+    background: #fff;
+    display: inline-block;
+}
+.rtl .threadSubjectUnreadRTL::before{
+    right: -15px;
+    left: auto;
+}
+.rtl .faqImageRTL{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.rtl .relativeSectionRTL::after{
+    right: 4px;
+}
+.rtl .verfiedRTL{
+    display: -webkit-box;
+}
+/*********Responsive***********/
+@media (max-width:1199px) and (min-width:768px) {
+    .rtl .navbar-header {
+        float: inherit !important;
+    }
+    .rtl .hamburgerButton {
+    left: 15px;
+    right: auto;
+}
+.rtl .navbar-nav>li {
+    float: inherit !important;
+}
+ .rtl .normalHeader.navbar-right {
+    float: inherit !important;
+}
+    }
+@media screen and (max-width: 767px){
+.rtl .sliderContentRTL{
+    padding-left: 15px;
+    padding-right: 0;
+}
+.rtl.rentAllHeader .navbar-brand {
+    float: none !important;
+}
+.rtl .normalPosition .navbar-brand.navBrandRTL {
+    float: left !important;
+}
+.rtl .headerNewDesign .navbar-default .navbar-nav {
+    float: none !important;
+}
+.rtl .headerNewDesign .navbar-default .navbar-nav>li>a {
+    text-align: right;
+}
+.rtl .closeColorRTL{
+    left: 22px;
+    right: auto;
+}
+.rtl .secondBannerRTL {
+    clip-path: inherit !important;
+}
+.rtl .firstBannerMarginRTL {
+    margin: 0;
+}
+.rtl .navbar-right.normalHeader{
+    float: none !important;
+    margin-top: 73px;
+}
+.rtl .rentAllHeader.navbar-default .navbar-nav>li>a{
+    text-align: right;
+}
+.rtl .smPositionRTLMb{
+    float: right;
+}
+.rtl .modalCaptionLinkRTL {
+    margin-right: 0;
+    margin-left: 0;
+}
+.rtl .borderNoneMb a {
+    border-top: 1px solid #dce0e0 !important;
+}
+.rtl .displayInlineFlexMbRTL{
+    border-left: 1px dotted #d8dce1;
+}
+.rtl .pagecontentWrapperRTL {
+    margin-left: 0;
+    margin-right: 0;
+}
+.rtl .hamburger {
+    right: 25px;
+    left: auto;
+}
+.rtl .logoutIconRTL{
+    float: left;
+    margin: 23px 0px 0 15px;
+}
+.rtl .closeColorMbRTL{
+    text-align: left;
+    padding: 2px 0px 2px 12px;
+}
+.rtl .listContainerRTLMb{
+    padding: 0;
+}
+.rtl .payoutSelectRTL select {
+    padding: 0px 10px 0px 0 !important;
+}
+.rtl .currencyPositionRTL{
+    left: 0;
+    right: auto;
+    border-top-right-radius: 30px;
+}
+.rtl .rentAllHeader.navbar-default .navbar-nav>li>form>button {
+    text-align: right;
+}
+.rtl .borderLineRTL::after {
+    right: 0;
+}
+.rtl .circleRTL {
+    right: -9px;
+    left: auto;
+    position: absolute;
+}
+.rtl .responsiveAvatarImgRTL{
+    float: left;
+}
+.rtl .manageCloseIconRTL{
+    display: block;
+    float: left;
+}
+.rtl .iconRemoveRTL {
+    left: 0;
+}
+.rtl .circleSuccessRTL {
+    right: -33px;
+}
+.rtl .exitToggleRTL{
+    float: left !important;
+}
+.rtl .navBarToggleListRTL{
+    float: right !important;
+    border-left: 1px solid #dce0e0;
+    border-right: inherit;
+}
+.rtl .searchMapContainerRTL {
+    left: 0;
+    right: auto;
+    padding:0;
+}
+.rtl .displayInlineFlexMbRTL {
+    border-right: inherit;
+}
+.rtl .displayInlineFlexRTL {
+    border-right: inherit;
+}
+.displayInlineFlexRTLMb{
+    border-left: inherit !important;
+}
+.rtl .normalPosition .navbar-brand.navBrandRTL {
+    float: right !important;
+}
+.rtl .socialIconsRTL{
+    margin-left: 15px;
+    margin-right: 0;
+}
+.rtl .hamburgerButton {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    right: auto;
+}
+.rtl .textAlignRightMb{
+text-align: right;
+}
+.rtl .footerContainerRTL {
+    margin-right: 0;
+    margin-left: 0;
+}
+.rtl .radioBtnRTL {
+    margin-right: 0;
+    margin-left: 0;
+}
+.rtl .btnModalDeleteRTL {
+    margin-left: 0px;
+    margin-right: 0                                 ;
+}
+.rtl .responsiveMonthRTL{
+    padding-right: 0px !important;
+}
+.rtl .publishArrow select {
+    margin-right: 0;
+}
+}
+/*********Responsive***********/
